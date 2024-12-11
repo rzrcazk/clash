@@ -6,6 +6,32 @@ DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
 DOMAIN-SUFFIX,hao123.com
 # DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+DOMAIN-SUFFIX,952712.xyz
+DOMAIN-SUFFIX,juanshen.eu.org
+DOMAIN-SUFFIX,fuclaude.com
+DOMAIN-SUFFIX,jetbrains.com
+DOMAIN-SUFFIX,jetbrains.cn
+DOMAIN-SUFFIX,jetbrains.org
+DOMAIN-SUFFIX,jetbrains.io
+DOMAIN-SUFFIX,codeium.app
+DOMAIN,linux.do
+DOMAIN-SUFFIX,linux.do
+DOMAIN-SUFFIX,smnet.asia
+DOMAIN-SUFFIX,yunai.link
+DOMAIN-SUFFIX,cabinai.cn
+DOMAIN-SUFFIX,gueai.com
+DOMAIN-SUFFIX,guagua.com
+DOMAIN-SUFFIX,oaifree.com
+DOMAIN-SUFFIX,kelaode.ai
+DOMAIN-SUFFIX,cocopilot.org
+DOMAIN-SUFFIX,oaipro.com
+DOMAIN-SUFFIX,gptuu.cccom
+DOMAIN-SUFFIX,aliyy.cc
+DOMAIN-SUFFIX,mirrors.vsean.net
+DOMAIN-SUFFIX,cloudflare.com
+
+
+
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,baidu
