@@ -38,13 +38,13 @@ proxies:
   servername: www.yahoo.com                 
   reality-opts: 
     public-key: 030F3upYV3F9ZrLaHkB0HtzCz0KrFaZAN7ctnZpi1DM    
-    short-id: 33bde215                    
+    short-id: 33bde215                      
   client-fingerprint: chrome                  
 
 - name: vmess-ws-s27312                         
   type: vmess
   server: 47.79.33.98                        
-  port: 8080                                     
+  port: 8880                                     
   uuid: 8105d1d8-184c-4185-a573-d415e469466c       
   alterId: 0
   cipher: auto
@@ -56,10 +56,6 @@ proxies:
     path: "8105d1d8-184c-4185-a573-d415e469466c-vm"                             
     headers:
       Host: www.bing.com                     
-
-
-
-
 
 - name: hysteria2-s27312                            
   type: hysteria2                                      
@@ -86,6 +82,71 @@ proxies:
   sni: www.bing.com                                
   skip-cert-verify: true
 
+- name: vmess-tls-argo固定-s27312                         
+  type: vmess
+  server: www.visa.com.sg                        
+  port: 8443                                     
+  uuid: 8105d1d8-184c-4185-a573-d415e469466c       
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  network: ws
+  servername: argo-claw.952712.xyz                    
+  ws-opts:
+    path: "8105d1d8-184c-4185-a573-d415e469466c-vm"                             
+    headers:
+      Host: argo-claw.952712.xyz
+
+
+- name: vmess-argo固定-s27312                         
+  type: vmess
+  server: www.visa.com.sg                        
+  port: 8880                                     
+  uuid: 8105d1d8-184c-4185-a573-d415e469466c       
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+  servername: argo-claw.952712.xyz                    
+  ws-opts:
+    path: "8105d1d8-184c-4185-a573-d415e469466c-vm"                             
+    headers:
+      Host: argo-claw.952712.xyz
+
+- name: vmess-tls-argo临时-s27312                         
+  type: vmess
+  server: www.visa.com.sg                        
+  port: 8443                                     
+  uuid: 8105d1d8-184c-4185-a573-d415e469466c       
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  network: ws
+  servername: garcia-national-rico-photos.trycloudflare.com                    
+  ws-opts:
+    path: "8105d1d8-184c-4185-a573-d415e469466c-vm"                             
+    headers:
+      Host: garcia-national-rico-photos.trycloudflare.com
+
+- name: vmess-argo临时-s27312                         
+  type: vmess
+  server: www.visa.com.sg                        
+  port: 8880                                     
+  uuid: 8105d1d8-184c-4185-a573-d415e469466c       
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+  servername: garcia-national-rico-photos.trycloudflare.com                    
+  ws-opts:
+    path: "8105d1d8-184c-4185-a573-d415e469466c-vm"                             
+    headers:
+      Host: garcia-national-rico-photos.trycloudflare.com 
+
 proxy-groups:
 - name: 负载均衡
   type: load-balance
@@ -97,6 +158,10 @@ proxy-groups:
     - vmess-ws-s27312
     - hysteria2-s27312
     - tuic5-s27312
+    - vmess-tls-argo固定-s27312
+    - vmess-argo固定-s27312
+    - vmess-tls-argo临时-s27312
+    - vmess-argo临时-s27312
 
 - name: 自动选择
   type: url-test
@@ -108,6 +173,10 @@ proxy-groups:
     - vmess-ws-s27312
     - hysteria2-s27312
     - tuic5-s27312
+    - vmess-tls-argo固定-s27312
+    - vmess-argo固定-s27312
+    - vmess-tls-argo临时-s27312
+    - vmess-argo临时-s27312
     
 - name: 🌍选择代理节点
   type: select
@@ -119,6 +188,10 @@ proxy-groups:
     - vmess-ws-s27312
     - hysteria2-s27312
     - tuic5-s27312
+    - vmess-tls-argo固定-s27312
+    - vmess-argo固定-s27312
+    - vmess-tls-argo临时-s27312
+    - vmess-argo临时-s27312
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
