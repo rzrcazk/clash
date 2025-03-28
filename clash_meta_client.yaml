@@ -26,7 +26,7 @@ dns:
       - 240.0.0.0/4
 
 proxies:
-- name: vless-reality-vision-s27312               
+- name: 🇯🇵 vless-reality-vision-s27312               
   type: vless
   server: 47.79.33.98                           
   port: 51446                                
@@ -41,7 +41,7 @@ proxies:
     short-id: 33bde215                      
   client-fingerprint: chrome                  
 
-- name: vmess-ws-s27312                         
+- name: 🇯🇵 vmess-ws-s27312                         
   type: vmess
   server: 47.79.33.98                        
   port: 8880                                     
@@ -57,7 +57,7 @@ proxies:
     headers:
       Host: www.bing.com                     
 
-- name: hysteria2-s27312                            
+- name: 🇯🇵 hysteria2-s27312                            
   type: hysteria2                                      
   server: 47.79.33.98                               
   port: 33581                                
@@ -68,7 +68,7 @@ proxies:
   skip-cert-verify: true
   fast-open: true
 
-- name: tuic5-s27312                            
+- name: 🇯🇵 tuic5-s27312                            
   server: 47.79.33.98                      
   port: 18358                                    
   type: tuic
@@ -82,7 +82,7 @@ proxies:
   sni: www.bing.com                                
   skip-cert-verify: true
 
-- name: vmess-tls-argo固定-s27312                         
+- name: 🇯🇵 vmess-tls-argo固定-s27312                         
   type: vmess
   server: www.visa.com.sg                        
   port: 8443                                     
@@ -99,7 +99,7 @@ proxies:
       Host: argo-claw.952712.xyz
 
 
-- name: vmess-argo固定-s27312                         
+- name: 🇯🇵 vmess-argo固定-s27312                         
   type: vmess
   server: www.visa.com.sg                        
   port: 8880                                     
@@ -115,7 +115,7 @@ proxies:
     headers:
       Host: argo-claw.952712.xyz
 
-- name: vmess-tls-argo临时-s27312                         
+- name: 🇯🇵 vmess-tls-argo临时-s27312                         
   type: vmess
   server: www.visa.com.sg                        
   port: 8443                                     
@@ -131,7 +131,7 @@ proxies:
     headers:
       Host: garcia-national-rico-photos.trycloudflare.com
 
-- name: vmess-argo临时-s27312                         
+- name: 🇯🇵 vmess-argo临时-s27312                         
   type: vmess
   server: www.visa.com.sg                        
   port: 8880                                     
@@ -154,14 +154,14 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-s27312                              
-    - vmess-ws-s27312
-    - hysteria2-s27312
-    - tuic5-s27312
-    - vmess-tls-argo固定-s27312
-    - vmess-argo固定-s27312
-    - vmess-tls-argo临时-s27312
-    - vmess-argo临时-s27312
+    - 🇯🇵 vless-reality-vision-s27312                              
+    - 🇯🇵 vmess-ws-s27312
+    - 🇯🇵 hysteria2-s27312
+    - 🇯🇵 tuic5-s27312
+    - 🇯🇵 vmess-tls-argo固定-s27312
+    - 🇯🇵 vmess-argo固定-s27312
+    - 🇯🇵 vmess-tls-argo临时-s27312
+    - 🇯🇵 vmess-argo临时-s27312
 
 - name: 自动选择
   type: url-test
@@ -169,14 +169,14 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-s27312                              
-    - vmess-ws-s27312
-    - hysteria2-s27312
-    - tuic5-s27312
-    - vmess-tls-argo固定-s27312
-    - vmess-argo固定-s27312
-    - vmess-tls-argo临时-s27312
-    - vmess-argo临时-s27312
+    - 🇯🇵 vless-reality-vision-s27312                              
+    - 🇯🇵 vmess-ws-s27312
+    - 🇯🇵 hysteria2-s27312
+    - 🇯🇵 tuic5-s27312
+    - 🇯🇵 vmess-tls-argo固定-s27312
+    - 🇯🇵 vmess-argo固定-s27312
+    - 🇯🇵 vmess-tls-argo临时-s27312
+    - 🇯🇵 vmess-argo临时-s27312
     
 - name: 🌍选择代理节点
   type: select
@@ -184,14 +184,14 @@ proxy-groups:
     - 负载均衡                                         
     - 自动选择
     - DIRECT
-    - vless-reality-vision-s27312                              
-    - vmess-ws-s27312
-    - hysteria2-s27312
-    - tuic5-s27312
-    - vmess-tls-argo固定-s27312
-    - vmess-argo固定-s27312
-    - vmess-tls-argo临时-s27312
-    - vmess-argo临时-s27312
+    - 🇯🇵 vless-reality-vision-s27312                              
+    - 🇯🇵 vmess-ws-s27312
+    - 🇯🇵 hysteria2-s27312
+    - 🇯🇵 tuic5-s27312
+    - 🇯🇵 vmess-tls-argo固定-s27312
+    - 🇯🇵 vmess-argo固定-s27312
+    - 🇯🇵 vmess-tls-argo临时-s27312
+    - 🇯🇵 vmess-argo临时-s27312
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
