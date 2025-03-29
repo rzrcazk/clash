@@ -2,7 +2,7 @@
 # 机场订阅
 proxy-providers:
   Airport-serv00-nft6gq060:
-    url: "https://nft6gq060.serv00.net/_v2sub.txt"
+    url: "https://nft6gq060.serv00.net/b10b72f6-d6b6-42fb-9ffd-8cf32d71a8d3_v2sub.txt"
     type: http
     interval: 86400
     path: /etc/openclash/proxy_provider/Airport-serv00-nft6gq060.yaml
@@ -22,7 +22,7 @@ proxy-providers:
       interval: 300
     proxy: 直连
   Airport-serv00-sffrerek:
-    url: "https://sffrerek.serv00.net/6f976dc7-37ee-4f08-a585-1127e621617b_v2sub.txt"
+    url: "https://sffrerek.serv00.net/c4073fa4-6428-43c4-8197-2fe0f71de527_v2sub.txt"
     type: http
     interval: 86400
     path: /etc/openclash/proxy_provider/Airport-serv00-sffrerek.yaml
