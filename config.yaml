@@ -32,7 +32,7 @@ proxy-providers:
       interval: 300
     proxy: 直连
   Airport-claw:
-    url: "https://www.257053.xyz/https://raw.githubusercontent.com/rzrcazk/clash/refs/heads/yz/clash_meta_client.yaml"
+    url: "https://www.257053.xyz/https://raw.githubusercontent.com/rzrcazk/clash/refs/heads/yz/claw.txt"
     type: http
     interval: 86400
     path: /etc/openclash/proxy_provider/Airport-claw.yaml
@@ -42,10 +42,20 @@ proxy-providers:
       interval: 300
     proxy: 直连
   Airport-cloudflare:
-    url: "https://9527.juanshen1234.eu.org/9527?clash"
+    url: "https://9527.juanshen1234.eu.org/9527?b64"
     type: http
     interval: 86400
     path: /etc/openclash/proxy_provider/Airport-cloudflare.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连
+  Airport-gist:
+    url: "https://www.257053.xyz/https://gist.githubusercontent.com/rzrcazk/29cc4b8d879982fb82c20fee7b850630/raw/4ab9b2526aff8680a6937d7ab42126d308aa22f6/all.yaml"
+    type: http
+    interval: 86400
+    path: /etc/openclash/proxy_provider/Airport-gist.yaml
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -136,9 +146,9 @@ dns:
  
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-pr: &pr {type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 日本故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+pr: &pr {type: select, proxies: [🚀 默认代理, ♻️ 自动选择, 🔯 故障转移, 👆 手动选择, 直连]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港故转, 🔯 日本故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择, 🔯 故障转移, 👆 手动选择, 直连]}
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
   - {name: 🤖 ChatGPT, <<: *pr}
@@ -153,20 +163,14 @@ proxy-groups:
   - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, <<: *pr}
-  - {name: 🇭🇰 香港节点, type: select, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇯🇵 日本节点, type: select, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], filter: "(?i)日|jp|japan"}
-  - {name: 🇺🇲 美国节点, type: select, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 🔯 香港故转, type: fallback, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: 🔯 日本故转, type: fallback, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
-  - {name: ♻️ 香港自动, type: url-test, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: ♻️ 日本自动, type: url-test, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
-  - {name: ♻️ 美国自动, type: url-test, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: ♻️ 自动选择, type: url-test, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare], tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
-  - {name: 🌐 全部节点, type: select, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare]}
+  - {name: 👆 手动选择, type: select, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare, Airport-gist]}
+  - {name: 🔯 故障转移, type: fallback, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare, Airport-gist], tolerance: 20, interval: 300}
+  - {name: ♻️ 自动选择, type: url-test, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare, Airport-gist], tolerance: 20, interval: 300}
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
+  - DOMAIN-SUFFIX,cmliussss.com,直连
   - DOMAIN-SUFFIX,cloudflare.com,直连
   - DOMAIN-SUFFIX,fuclaude.com,直连
   - DOMAIN-SUFFIX,oaipro.com,直连
