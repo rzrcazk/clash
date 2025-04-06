@@ -1,36 +1,6 @@
 # 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
 # 机场订阅
 proxy-providers:
-  Airport-serv00-nft6gq060:
-    url: "https://nft6gq060.serv00.net/b10b72f6-d6b6-42fb-9ffd-8cf32d71a8d3_v2sub.txt"
-    type: http
-    interval: 86400
-    path: /etc/openclash/proxy_provider/Airport-serv00-nft6gq060.yaml
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
-  Airport-serv00-juanshen:
-    url: "https://juanshen.serv00.net/1350c203-3c7a-41e9-8d7b-f14860139e7a_v2sub.txt"
-    type: http
-    interval: 86400
-    path: /etc/openclash/proxy_provider/Airport-serv00-juanshen.yaml
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
-  Airport-serv00-sffrerek:
-    url: "https://sffrerek.serv00.net/c4073fa4-6428-43c4-8197-2fe0f71de527_v2sub.txt"
-    type: http
-    interval: 86400
-    path: /etc/openclash/proxy_provider/Airport-serv00-sffrerek.yaml
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
   Airport-claw:
     url: "https://www.257053.xyz/https://raw.githubusercontent.com/rzrcazk/clash/refs/heads/yz/claw.txt"
     type: http
@@ -163,9 +133,9 @@ proxy-groups:
   - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, <<: *pr}
-  - {name: 👆 手动选择, type: select, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare, Airport-gist]}
-  - {name: 🔯 故障转移, type: fallback, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare, Airport-gist], tolerance: 20, interval: 300}
-  - {name: ♻️ 自动选择, type: url-test, use: [Airport-serv00-nft6gq060, Airport-serv00-juanshen, Airport-serv00-sffrerek, Airport-claw, Airport-cloudflare, Airport-gist], tolerance: 20, interval: 300}
+  - {name: 👆 手动选择, type: select, use: [Airport-claw, Airport-cloudflare, Airport-gist]}
+  - {name: 🔯 故障转移, type: fallback, use: [Airport-claw, Airport-cloudflare, Airport-gist], tolerance: 20, interval: 300}
+  - {name: ♻️ 自动选择, type: url-test, use: [Airport-claw, Airport-cloudflare, Airport-gist], tolerance: 20, interval: 300}
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
