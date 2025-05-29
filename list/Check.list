@@ -4,7 +4,8 @@ DOMAIN-SUFFIX,vultr.com
 DOMAIN-SUFFIX,test-ipv6.com
 DOMAIN-SUFFIX,ipw.cn
 DOMAIN-SUFFIX,fast.com
-DOMAIN-SUFFIX,nflxvideo.ne
+DOMAIN,ichnaea-web.netflix.com
+DOMAIN-SUFFIX,1.oca.nflxvideo.net
 DOMAIN-SUFFIX,speedcheck.org
 DOMAIN-SUFFIX,speedtest.net
 DOMAIN-SUFFIX,speedtest.cn
