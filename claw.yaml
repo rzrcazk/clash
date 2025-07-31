@@ -166,7 +166,7 @@ proxies:
     dialer-proxy: landing-socks5-2
 
 proxy-groups:
-  # 主要代理组 - 自动选择最优节点
+  # 主要代理组 - 自动选择最优节点（排除落地SOCKS5节点）
   - name: PROXY
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -182,7 +182,7 @@ proxy-groups:
       - hysteria2-s27312-2
       - tuic5-s27312-2
 
-  # 手动选择组
+  # 手动选择组（排除落地SOCKS5节点）
   - name: Manual
     type: select
     proxies:
@@ -196,7 +196,7 @@ proxy-groups:
       - tuic5-s27312-2
       - DIRECT
 
-  # 故障转移组
+  # 故障转移组（排除落地SOCKS5节点）
   - name: Fallback
     type: fallback
     url: http://www.gstatic.com/generate_204
@@ -206,8 +206,12 @@ proxy-groups:
       - vmess-ws-s27312
       - hysteria2-s27312
       - tuic5-s27312
+      - vless-reality-vision-s27312-2
+      - vmess-ws-s27312-2
+      - hysteria2-s27312-2
+      - tuic5-s27312-2
 
-  # 负载均衡组
+  # 负载均衡组（排除落地SOCKS5节点）
   - name: LoadBalance
     type: load-balance
     url: http://www.gstatic.com/generate_204
@@ -218,6 +222,10 @@ proxy-groups:
       - vmess-ws-s27312
       - hysteria2-s27312
       - tuic5-s27312
+      - vless-reality-vision-s27312-2
+      - vmess-ws-s27312-2
+      - hysteria2-s27312-2
+      - tuic5-s27312-2
 
 rules:
   # 直连规则
