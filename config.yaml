@@ -6,6 +6,7 @@ proxy-providers:
     type: http
     interval: 86400
     path: /etc/openclash/proxy_provider/Airport-claw.yaml
+    filter: '^(?!.*landing-socks5).*$'
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
