@@ -5,7 +5,7 @@ log-level: info
 unified-delay: true
 global-client-fingerprint: chrome
 dns:
-  enable: true
+  enable: false
   listen: :53
   ipv6: true
   enhanced-mode: fake-ip
@@ -26,24 +26,6 @@ dns:
       - 240.0.0.0/4
 
 proxies:
-  # SOCKS5落地节点（需要先定义）
-  - name: landing-socks5-1
-    type: socks5
-    server: 45.194.100.181
-    port: 53853
-    username: KshY68XV2LCPKDr
-    password: 9fFGv3JLTDExKee
-    udp: true
-
-  - name: landing-socks5-2
-    type: socks5
-    server: 207.228.42.131
-    port: 46688
-    username: 00QDXWq85Zg8KNo
-    password: 9qTGqHqv5TDFFTX
-    udp: true
-
-  # 中转节点配置 - 使用 dialer-proxy 实现链式代理
   - name: vless-reality-vision-s27312
     type: vless
     server: 47.79.33.98
@@ -58,7 +40,6 @@ proxies:
       public-key: 6yP151CRvBSxgd_-1MVvW0w2sgC5KPthEb5u1YqQxFw
       short-id: 1b24c1ab
     client-fingerprint: chrome
-    dialer-proxy: landing-socks5-1
 
   - name: vmess-ws-s27312
     type: vmess
@@ -75,7 +56,6 @@ proxies:
       path: "c3b94fe6-3121-4056-9240-0038d85ecc51-vm"
       headers:
         Host: www.bing.com
-    dialer-proxy: landing-socks5-1
 
   - name: hysteria2-s27312
     type: hysteria2
@@ -87,7 +67,6 @@ proxies:
     sni: www.bing.com
     skip-cert-verify: true
     fast-open: true
-    dialer-proxy: landing-socks5-1
 
   - name: tuic5-s27312
     server: 47.79.33.98
@@ -102,119 +81,42 @@ proxies:
     congestion-controller: bbr
     sni: www.bing.com
     skip-cert-verify: true
-    dialer-proxy: landing-socks5-1
-
-  # 使用第二个落地节点的版本
-  - name: vless-reality-vision-s27312-2
-    type: vless
-    server: 47.79.33.98
-    port: 14819
+  - name: vmess-tls-argo临时-s27312
+    type: vmess
+    server: www.visa.com.sg
+    port: 8443
     uuid: c3b94fe6-3121-4056-9240-0038d85ecc51
-    network: tcp
+    alterId: 0
+    cipher: auto
     udp: true
     tls: true
-    flow: xtls-rprx-vision
-    servername: www.yahoo.com
-    reality-opts:
-      public-key: 6yP151CRvBSxgd_-1MVvW0w2sgC5KPthEb5u1YqQxFw
-      short-id: 1b24c1ab
-    client-fingerprint: chrome
-    dialer-proxy: landing-socks5-2
+    network: ws
+    servername: annotated-distant-eastern-notices.trycloudflare.com
+    ws-opts:
+      path: "c3b94fe6-3121-4056-9240-0038d85ecc51-vm"
+      headers:
+        Host: annotated-distant-eastern-notices.trycloudflare.com
 
-  - name: vmess-ws-s27312-2
+  - name: vmess-argo临时-s27312
     type: vmess
-    server: 47.79.33.98
-    port: 8080
+    server: www.visa.com.sg
+    port: 8880
     uuid: c3b94fe6-3121-4056-9240-0038d85ecc51
     alterId: 0
     cipher: auto
     udp: true
     tls: false
     network: ws
-    servername: www.bing.com
+    servername: annotated-distant-eastern-notices.trycloudflare.com
     ws-opts:
       path: "c3b94fe6-3121-4056-9240-0038d85ecc51-vm"
       headers:
-        Host: www.bing.com
-    dialer-proxy: landing-socks5-2
-
-  - name: hysteria2-s27312-2
-    type: hysteria2
-    server: 47.79.33.98
-    port: 17716
-    password: c3b94fe6-3121-4056-9240-0038d85ecc51
-    alpn:
-      - h3
-    sni: www.bing.com
-    skip-cert-verify: true
-    fast-open: true
-    dialer-proxy: landing-socks5-2
-
-  - name: tuic5-s27312-2
-    server: 47.79.33.98
-    port: 17510
-    type: tuic
-    uuid: c3b94fe6-3121-4056-9240-0038d85ecc51
-    password: c3b94fe6-3121-4056-9240-0038d85ecc51
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    udp-relay-mode: native
-    congestion-controller: bbr
-    sni: www.bing.com
-    skip-cert-verify: true
-    dialer-proxy: landing-socks5-2
+        Host: annotated-distant-eastern-notices.trycloudflare.com
 
 proxy-groups:
-  # 主要代理组 - 自动选择最优节点（排除落地SOCKS5节点）
-  - name: PROXY
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    proxies:
-      - vless-reality-vision-s27312
-      - vmess-ws-s27312
-      - hysteria2-s27312
-      - tuic5-s27312
-      - vless-reality-vision-s27312-2
-      - vmess-ws-s27312-2
-      - hysteria2-s27312-2
-      - tuic5-s27312-2
-
-  # 手动选择组（排除落地SOCKS5节点）
-  - name: Manual
-    type: select
-    proxies:
-      - vless-reality-vision-s27312
-      - vmess-ws-s27312
-      - hysteria2-s27312
-      - tuic5-s27312
-      - vless-reality-vision-s27312-2
-      - vmess-ws-s27312-2
-      - hysteria2-s27312-2
-      - tuic5-s27312-2
-      - DIRECT
-
-  # 故障转移组（排除落地SOCKS5节点）
-  - name: Fallback
-    type: fallback
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    proxies:
-      - vless-reality-vision-s27312
-      - vmess-ws-s27312
-      - hysteria2-s27312
-      - tuic5-s27312
-      - vless-reality-vision-s27312-2
-      - vmess-ws-s27312-2
-      - hysteria2-s27312-2
-      - tuic5-s27312-2
-
-  # 负载均衡组（排除落地SOCKS5节点）
-  - name: LoadBalance
+  - name: 负载均衡
     type: load-balance
-    url: http://www.gstatic.com/generate_204
+    url: https://www.gstatic.com/generate_204
     interval: 300
     strategy: round-robin
     proxies:
@@ -222,20 +124,35 @@ proxy-groups:
       - vmess-ws-s27312
       - hysteria2-s27312
       - tuic5-s27312
-      - vless-reality-vision-s27312-2
-      - vmess-ws-s27312-2
-      - hysteria2-s27312-2
-      - tuic5-s27312-2
+      - vmess-tls-argo临时-s27312
+      - vmess-argo临时-s27312
 
+  - name: 自动选择
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - vless-reality-vision-s27312
+      - vmess-ws-s27312
+      - hysteria2-s27312
+      - tuic5-s27312
+      - vmess-tls-argo临时-s27312
+      - vmess-argo临时-s27312
+
+  - name: 🌍选择代理节点
+    type: select
+    proxies:
+      - 负载均衡
+      - 自动选择
+      - DIRECT
+      - vless-reality-vision-s27312
+      - vmess-ws-s27312
+      - hysteria2-s27312
+      - tuic5-s27312
+      - vmess-tls-argo临时-s27312
+      - vmess-argo临时-s27312
 rules:
-  # 直连规则
-  - DOMAIN-SUFFIX,local,DIRECT
-  - IP-CIDR,127.0.0.0/8,DIRECT
-  - IP-CIDR,172.16.0.0/12,DIRECT
-  - IP-CIDR,192.168.0.0/16,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT
-  - IP-CIDR,17.0.0.0/8,DIRECT
-  - IP-CIDR,100.64.0.0/10,DIRECT
-
-  # 默认使用代理
-  - MATCH,PROXY
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🌍选择代理节点
