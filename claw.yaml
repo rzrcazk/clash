@@ -5,7 +5,7 @@ log-level: info
 unified-delay: true
 global-client-fingerprint: chrome
 dns:
-  enable: false
+  enable: true
   listen: :53
   ipv6: true
   enhanced-mode: fake-ip
@@ -26,7 +26,8 @@ dns:
       - 240.0.0.0/4
 
 proxies:
-  - name: vless-reality-vision-s27312
+  # 原始中转节点（重命名为内部使用）
+  - name: vless-reality-vision-s27312-relay
     type: vless
     server: 47.79.33.98
     port: 14819
@@ -41,7 +42,7 @@ proxies:
       short-id: 1b24c1ab
     client-fingerprint: chrome
 
-  - name: vmess-ws-s27312
+  - name: vmess-ws-s27312-relay
     type: vmess
     server: 47.79.33.98
     port: 8080
@@ -57,7 +58,7 @@ proxies:
       headers:
         Host: www.bing.com
 
-  - name: hysteria2-s27312
+  - name: hysteria2-s27312-relay
     type: hysteria2
     server: 47.79.33.98
     port: 17716
@@ -68,7 +69,7 @@ proxies:
     skip-cert-verify: true
     fast-open: true
 
-  - name: tuic5-s27312
+  - name: tuic5-s27312-relay
     server: 47.79.33.98
     port: 17510
     type: tuic
@@ -82,7 +83,7 @@ proxies:
     sni: www.bing.com
     skip-cert-verify: true
 
-  # SOCKS5落地节点
+  # SOCKS5落地节点（内部使用）
   - name: landing-socks5-1
     type: socks5
     server: 45.194.100.181
@@ -99,72 +100,89 @@ proxies:
     password: 9qTGqHqv5TDFFTX
     udp: true
 
+  # 用户看到的节点名（实际是链式代理）
+  - name: vless-reality-vision-s27312
+    type: relay
+    proxies:
+      - vless-reality-vision-s27312-relay
+      - landing-socks5-1
+
+  - name: vmess-ws-s27312
+    type: relay
+    proxies:
+      - vmess-ws-s27312-relay
+      - landing-socks5-1
+
+  - name: hysteria2-s27312
+    type: relay
+    proxies:
+      - hysteria2-s27312-relay
+      - landing-socks5-1
+
+  - name: tuic5-s27312
+    type: relay
+    proxies:
+      - tuic5-s27312-relay
+      - landing-socks5-1
+
+  # 额外的链式组合（使用不同落地节点）
+  - name: vless-reality-vision-s27312-alt
+    type: relay
+    proxies:
+      - vless-reality-vision-s27312-relay
+      - landing-socks5-2
+
+  - name: vmess-ws-s27312-alt
+    type: relay
+    proxies:
+      - vmess-ws-s27312-relay
+      - landing-socks5-2
+
+  - name: hysteria2-s27312-alt
+    type: relay
+    proxies:
+      - hysteria2-s27312-relay
+      - landing-socks5-2
+
+  - name: tuic5-s27312-alt
+    type: relay
+    proxies:
+      - tuic5-s27312-relay
+      - landing-socks5-2
+
 proxy-groups:
-  # 主要代理组 - 用户选择的入口
+  # 主要代理组 - 自动选择最优链式代理
   - name: PROXY
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - vless-reality-vision-s27312
+      - vmess-ws-s27312
+      - hysteria2-s27312
+      - tuic5-s27312
+      - vless-reality-vision-s27312-alt
+      - vmess-ws-s27312-alt
+      - hysteria2-s27312-alt
+      - tuic5-s27312-alt
+
+  # 手动选择组（如果需要）
+  - name: Manual
     type: select
     proxies:
-      - vless-chain-1
-      - vless-chain-2
-      - vmess-chain-1
-      - vmess-chain-2
-      - hysteria2-chain-1
-      - hysteria2-chain-2
-      - tuic5-chain-1
-      - tuic5-chain-2
+      - vless-reality-vision-s27312
+      - vmess-ws-s27312
+      - hysteria2-s27312
+      - tuic5-s27312
+      - vless-reality-vision-s27312-alt
+      - vmess-ws-s27312-alt
+      - hysteria2-s27312-alt
+      - tuic5-s27312-alt
       - DIRECT
 
-  # 链式代理组 - 每个原节点通过不同落地节点
-  - name: vless-chain-1
-    type: relay
-    proxies:
-      - vless-reality-vision-s27312
-      - landing-socks5-1
-
-  - name: vless-chain-2
-    type: relay
-    proxies:
-      - vless-reality-vision-s27312
-      - landing-socks5-2
-
-  - name: vmess-chain-1
-    type: relay
-    proxies:
-      - vmess-ws-s27312
-      - landing-socks5-1
-
-  - name: vmess-chain-2
-    type: relay
-    proxies:
-      - vmess-ws-s27312
-      - landing-socks5-2
-
-  - name: hysteria2-chain-1
-    type: relay
-    proxies:
-      - hysteria2-s27312
-      - landing-socks5-1
-
-  - name: hysteria2-chain-2
-    type: relay
-    proxies:
-      - hysteria2-s27312
-      - landing-socks5-2
-
-  - name: tuic5-chain-1
-    type: relay
-    proxies:
-      - tuic5-s27312
-      - landing-socks5-1
-
-  - name: tuic5-chain-2
-    type: relay
-    proxies:
-      - tuic5-s27312
-      - landing-socks5-2
-
   # 落地节点负载均衡组
-  - name: landing-balance
+  - name: Landing-Balance
     type: load-balance
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -181,6 +199,6 @@ rules:
   - IP-CIDR,10.0.0.0/8,DIRECT
   - IP-CIDR,17.0.0.0/8,DIRECT
   - IP-CIDR,100.64.0.0/10,DIRECT
-  
+
   # 默认使用代理
   - MATCH,PROXY
