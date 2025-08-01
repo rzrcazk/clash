@@ -26,92 +26,181 @@ dns:
       - 240.0.0.0/4
 
 proxies:
-  - name: vless-reality-vision-s27312
+  # 直连节点组
+  - name: 直连-vless
     type: vless
     server: 47.79.33.98
-    port: 14819
-    uuid: c3b94fe6-3121-4056-9240-0038d85ecc51
+    port: 8443
+    uuid: 160787c1-f590-4449-cb32-7e7ece624f4f
     network: tcp
     udp: true
     tls: true
     flow: xtls-rprx-vision
-    servername: www.yahoo.com
+    servername: www.tesla.com
     reality-opts:
-      public-key: 6yP151CRvBSxgd_-1MVvW0w2sgC5KPthEb5u1YqQxFw
-      short-id: 1b24c1ab
+      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
     client-fingerprint: chrome
 
-  - name: vmess-ws-s27312
-    type: vmess
-    server: 47.79.33.98
-    port: 8080
-    uuid: c3b94fe6-3121-4056-9240-0038d85ecc51
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    network: ws
-    servername: www.bing.com
-    ws-opts:
-      path: "c3b94fe6-3121-4056-9240-0038d85ecc51-vm"
-      headers:
-        Host: www.bing.com
-
-  - name: hysteria2-s27312
-    type: hysteria2
-    server: 47.79.33.98
-    port: 17716
-    password: c3b94fe6-3121-4056-9240-0038d85ecc51
-    alpn:
-      - h3
-    sni: www.bing.com
-    skip-cert-verify: true
-    fast-open: true
-
-  - name: tuic5-s27312
-    server: 47.79.33.98
-    port: 17510
+  - name: 直连-tuic
     type: tuic
-    uuid: c3b94fe6-3121-4056-9240-0038d85ecc51
-    password: c3b94fe6-3121-4056-9240-0038d85ecc51
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    udp-relay-mode: native
-    congestion-controller: bbr
-    sni: www.bing.com
-    skip-cert-verify: true
-  - name: vmess-tls-argo临时-s27312
-    type: vmess
-    server: www.visa.com.sg
+    server: 47.79.33.98
     port: 8443
-    uuid: c3b94fe6-3121-4056-9240-0038d85ecc51
-    alterId: 0
-    cipher: auto
+    uuid: 160787c1-f590-4449-cb32-7e7ece624f4f
+    password: KE71ymHsMu
+    alpn: [h3, h2, http/1.1]
+    congestion-controller: bbr
+    skip-cert-verify: true
+    sni: www.tesla.com
+
+  # 美-45.194.100.181节点组
+  - name: 美-45.194.100.181-vless
+    type: vless
+    server: 47.79.33.98
+    port: 8443
+    uuid: 436eb9d8-d866-4df2-ef2b-f6be42ec2690
+    network: tcp
     udp: true
     tls: true
-    network: ws
-    servername: annotated-distant-eastern-notices.trycloudflare.com
-    ws-opts:
-      path: "c3b94fe6-3121-4056-9240-0038d85ecc51-vm"
-      headers:
-        Host: annotated-distant-eastern-notices.trycloudflare.com
+    flow: xtls-rprx-vision
+    servername: www.tesla.com
+    reality-opts:
+      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
+    client-fingerprint: chrome
 
-  - name: vmess-argo临时-s27312
+  - name: 美-45.194.100.181-tuic
+    type: tuic
+    server: 47.79.33.98
+    port: 8443
+    uuid: 436eb9d8-d866-4df2-ef2b-f6be42ec2690
+    password: p6CkUUImzC
+    alpn: [h3, h2, http/1.1]
+    congestion-controller: bbr
+    skip-cert-verify: true
+    sni: www.tesla.com
+
+  # 美-207.228.42.131节点组
+  - name: 美-207.228.42.131-vless
+    type: vless
+    server: 47.79.33.98
+    port: 8443
+    uuid: 0866c599-90b2-4e2a-c713-d51c579c6167
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.tesla.com
+    reality-opts:
+      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
+    client-fingerprint: chrome
+
+  - name: 美-207.228.42.131-tuic
+    type: tuic
+    server: 47.79.33.98
+    port: 8443
+    uuid: 0866c599-90b2-4e2a-c713-d51c579c6167
+    password: ToCbX0hJWf
+    alpn: [h3, h2, http/1.1]
+    congestion-controller: bbr
+    skip-cert-verify: true
+    sni: www.tesla.com
+
+  # 美-68.170.3.215节点组
+  - name: 美-68.170.3.215-vless
+    type: vless
+    server: 47.79.33.98
+    port: 8443
+    uuid: c5d20083-2028-44f8-c59d-27c348821b6d
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.tesla.com
+    reality-opts:
+      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
+    client-fingerprint: chrome
+
+  - name: 美-68.170.3.215-tuic
+    type: tuic
+    server: 47.79.33.98
+    port: 8443
+    uuid: c5d20083-2028-44f8-c59d-27c348821b6d
+    password: FbCNMeMeLc
+    alpn: [h3, h2, http/1.1]
+    congestion-controller: bbr
+    skip-cert-verify: true
+    sni: www.tesla.com
+
+  # 美国万兆VPN节点组
+  - name: 美国万兆-111
     type: vmess
-    server: www.visa.com.sg
-    port: 8880
-    uuid: c3b94fe6-3121-4056-9240-0038d85ecc51
+    server: 44.253.27.201
+    port: 29820
+    uuid: e93bccdb-d7e7-494a-815f-8122fab2b845
     alterId: 0
     cipher: auto
     udp: true
     tls: false
-    network: ws
-    servername: annotated-distant-eastern-notices.trycloudflare.com
-    ws-opts:
-      path: "c3b94fe6-3121-4056-9240-0038d85ecc51-vm"
-      headers:
-        Host: annotated-distant-eastern-notices.trycloudflare.com
+    network: tcp
+    http-opts:
+      method: GET
+      path:
+        - "/"
+
+  - name: 美国万兆-222
+    type: vmess
+    server: 44.253.27.201
+    port: 46128
+    uuid: 4c7b58cb-3c83-4a20-8843-5c6db671dc23
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: false
+    network: tcp
+    http-opts:
+      method: GET
+      path:
+        - "/"
+
+  - name: 美国万兆-333
+    type: vmess
+    server: 44.253.27.201
+    port: 19288
+    uuid: 210689ff-9638-41ae-e654-20835d8c52da
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: false
+    network: tcp
+    http-opts:
+      method: GET
+      path:
+        - "/"
+
+  - name: 美国万兆-444
+    type: vless
+    server: 44.253.27.201
+    port: 23399
+    uuid: 444
+    network: tcp
+    udp: true
+    tls: false
+    http-opts:
+      method: GET
+      path:
+        - "/"
+
+  - name: 美国万兆-555
+    type: vless
+    server: 44.253.27.201
+    port: 28924
+    uuid: fdd5c8ab-0e8e-44cd-a639-9a1acb743a0a
+    network: tcp
+    udp: true
+    tls: false
+    http-opts:
+      method: GET
+      path:
+        - "/"
 
 proxy-groups:
   - name: 负载均衡
@@ -120,12 +209,19 @@ proxy-groups:
     interval: 300
     strategy: round-robin
     proxies:
-      - vless-reality-vision-s27312
-      - vmess-ws-s27312
-      - hysteria2-s27312
-      - tuic5-s27312
-      - vmess-tls-argo临时-s27312
-      - vmess-argo临时-s27312
+      - 直连-vless
+      - 直连-tuic
+      - 美-45.194.100.181-vless
+      - 美-45.194.100.181-tuic
+      - 美-207.228.42.131-vless
+      - 美-207.228.42.131-tuic
+      - 美-68.170.3.215-vless
+      - 美-68.170.3.215-tuic
+      - 美国万兆-111
+      - 美国万兆-222
+      - 美国万兆-333
+      - 美国万兆-444
+      - 美国万兆-555
 
   - name: 自动选择
     type: url-test
@@ -133,12 +229,19 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-      - vless-reality-vision-s27312
-      - vmess-ws-s27312
-      - hysteria2-s27312
-      - tuic5-s27312
-      - vmess-tls-argo临时-s27312
-      - vmess-argo临时-s27312
+      - 直连-vless
+      - 直连-tuic
+      - 美-45.194.100.181-vless
+      - 美-45.194.100.181-tuic
+      - 美-207.228.42.131-vless
+      - 美-207.228.42.131-tuic
+      - 美-68.170.3.215-vless
+      - 美-68.170.3.215-tuic
+      - 美国万兆-111
+      - 美国万兆-222
+      - 美国万兆-333
+      - 美国万兆-444
+      - 美国万兆-555
 
   - name: 🌍选择代理节点
     type: select
@@ -146,12 +249,19 @@ proxy-groups:
       - 负载均衡
       - 自动选择
       - DIRECT
-      - vless-reality-vision-s27312
-      - vmess-ws-s27312
-      - hysteria2-s27312
-      - tuic5-s27312
-      - vmess-tls-argo临时-s27312
-      - vmess-argo临时-s27312
+      - 直连-vless
+      - 直连-tuic
+      - 美-45.194.100.181-vless
+      - 美-45.194.100.181-tuic
+      - 美-207.228.42.131-vless
+      - 美-207.228.42.131-tuic
+      - 美-68.170.3.215-vless
+      - 美-68.170.3.215-tuic
+      - 美国万兆-111
+      - 美国万兆-222
+      - 美国万兆-333
+      - 美国万兆-444
+      - 美国万兆-555
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
