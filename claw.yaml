@@ -130,7 +130,7 @@ proxies:
     skip-cert-verify: true
     sni: www.tesla.com
 
-  # 美国万兆VPN节点组
+  # 美国万兆VPN节点组 - IPv4
   - name: 美国万兆-111
     type: vmess
     server: 44.253.27.201
@@ -143,8 +143,9 @@ proxies:
     network: tcp
     http-opts:
       method: GET
-      path:
-        - "/"
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
 
   - name: 美国万兆-222
     type: vmess
@@ -158,8 +159,9 @@ proxies:
     network: tcp
     http-opts:
       method: GET
-      path:
-        - "/"
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
 
   - name: 美国万兆-333
     type: vmess
@@ -173,8 +175,9 @@ proxies:
     network: tcp
     http-opts:
       method: GET
-      path:
-        - "/"
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
 
   - name: 美国万兆-444
     type: vless
@@ -186,8 +189,9 @@ proxies:
     tls: false
     http-opts:
       method: GET
-      path:
-        - "/"
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
 
   - name: 美国万兆-555
     type: vless
@@ -199,8 +203,86 @@ proxies:
     tls: false
     http-opts:
       method: GET
-      path:
-        - "/"
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
+
+  # 美国万兆VPN节点组 - IPv6
+  - name: 美国万兆-111-IPv6
+    type: vmess
+    server: "[2600:1f14:1823:2a00:788a:fcca:ec35:d785]"
+    port: 29820
+    uuid: e93bccdb-d7e7-494a-815f-8122fab2b845
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: false
+    network: tcp
+    http-opts:
+      method: GET
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
+
+  - name: 美国万兆-222-IPv6
+    type: vmess
+    server: "[2600:1f14:1823:2a00:788a:fcca:ec35:d785]"
+    port: 46128
+    uuid: 4c7b58cb-3c83-4a20-8843-5c6db671dc23
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: false
+    network: tcp
+    http-opts:
+      method: GET
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
+
+  - name: 美国万兆-333-IPv6
+    type: vmess
+    server: "[2600:1f14:1823:2a00:788a:fcca:ec35:d785]"
+    port: 19288
+    uuid: 210689ff-9638-41ae-e654-20835d8c52da
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: false
+    network: tcp
+    http-opts:
+      method: GET
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
+
+  - name: 美国万兆-444-IPv6
+    type: vless
+    server: "[2600:1f14:1823:2a00:788a:fcca:ec35:d785]"
+    port: 23399
+    uuid: 444
+    network: tcp
+    udp: true
+    tls: false
+    http-opts:
+      method: GET
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
+
+  - name: 美国万兆-555-IPv6
+    type: vless
+    server: "[2600:1f14:1823:2a00:788a:fcca:ec35:d785]"
+    port: 28924
+    uuid: fdd5c8ab-0e8e-44cd-a639-9a1acb743a0a
+    network: tcp
+    udp: true
+    tls: false
+    http-opts:
+      method: GET
+      path: ["/"]
+      headers:
+        Connection: [keep-alive]
 
 proxy-groups:
   - name: 负载均衡
@@ -222,6 +304,11 @@ proxy-groups:
       - 美国万兆-333
       - 美国万兆-444
       - 美国万兆-555
+      - 美国万兆-111-IPv6
+      - 美国万兆-222-IPv6
+      - 美国万兆-333-IPv6
+      - 美国万兆-444-IPv6
+      - 美国万兆-555-IPv6
 
   - name: 自动选择
     type: url-test
@@ -242,6 +329,11 @@ proxy-groups:
       - 美国万兆-333
       - 美国万兆-444
       - 美国万兆-555
+      - 美国万兆-111-IPv6
+      - 美国万兆-222-IPv6
+      - 美国万兆-333-IPv6
+      - 美国万兆-444-IPv6
+      - 美国万兆-555-IPv6
 
   - name: 🌍选择代理节点
     type: select
@@ -262,6 +354,11 @@ proxy-groups:
       - 美国万兆-333
       - 美国万兆-444
       - 美国万兆-555
+      - 美国万兆-111-IPv6
+      - 美国万兆-222-IPv6
+      - 美国万兆-333-IPv6
+      - 美国万兆-444-IPv6
+      - 美国万兆-555-IPv6
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
