@@ -52,12 +52,11 @@ proxies:
     skip-cert-verify: true
     sni: www.tesla.com
 
-  # 美-45.194.100.181节点组
-  - name: 美-45.194.100.181-vless
+  - name: zoro伪家宽-4837线路200m2t-vless
     type: vless
     server: 47.79.33.98
     port: 8443
-    uuid: 436eb9d8-d866-4df2-ef2b-f6be42ec2690
+    uuid: 092be669-80e7-4108-edd1-28255e9a6a88
     network: tcp
     udp: true
     tls: true
@@ -67,212 +66,16 @@ proxies:
       public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
     client-fingerprint: chrome
 
-  - name: 美-45.194.100.181-tuic
+  - name: zoro伪家宽-4837线路200m2t-tuic
     type: tuic
     server: 47.79.33.98
     port: 8443
-    uuid: 436eb9d8-d866-4df2-ef2b-f6be42ec2690
-    password: p6CkUUImzC
+    uuid: 092be669-80e7-4108-edd1-28255e9a6a88
+    password: BS7dFZkG86
     alpn: [h3, h2, http/1.1]
     congestion-controller: bbr
     skip-cert-verify: true
     sni: www.tesla.com
-
-  # 美-207.228.42.131节点组
-  - name: 美-207.228.42.131-vless
-    type: vless
-    server: 47.79.33.98
-    port: 8443
-    uuid: 0866c599-90b2-4e2a-c713-d51c579c6167
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.tesla.com
-    reality-opts:
-      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
-    client-fingerprint: chrome
-
-  - name: 美-207.228.42.131-tuic
-    type: tuic
-    server: 47.79.33.98
-    port: 8443
-    uuid: 0866c599-90b2-4e2a-c713-d51c579c6167
-    password: ToCbX0hJWf
-    alpn: [h3, h2, http/1.1]
-    congestion-controller: bbr
-    skip-cert-verify: true
-    sni: www.tesla.com
-
-  # 美-68.170.3.215节点组
-  - name: 美-68.170.3.215-vless
-    type: vless
-    server: 47.79.33.98
-    port: 8443
-    uuid: c5d20083-2028-44f8-c59d-27c348821b6d
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.tesla.com
-    reality-opts:
-      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
-    client-fingerprint: chrome
-
-  - name: 美-68.170.3.215-tuic
-    type: tuic
-    server: 47.79.33.98
-    port: 8443
-    uuid: c5d20083-2028-44f8-c59d-27c348821b6d
-    password: FbCNMeMeLc
-    alpn: [h3, h2, http/1.1]
-    congestion-controller: bbr
-    skip-cert-verify: true
-    sni: www.tesla.com
-
-  # 美国万兆VPN节点组 - IPv4
-  - name: 美国万兆-111
-    type: vmess
-    server: 44.253.27.201
-    port: 29820
-    uuid: e93bccdb-d7e7-494a-815f-8122fab2b845
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    network: http
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  - name: 美国万兆-222
-    type: vmess
-    server: 44.253.27.201
-    port: 46128
-    uuid: 4c7b58cb-3c83-4a20-8843-5c6db671dc23
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    network: http
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  - name: 美国万兆-333
-    type: vmess
-    server: 44.253.27.201
-    port: 19288
-    uuid: 210689ff-9638-41ae-e654-20835d8c52da
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    network: http
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  - name: 美国万兆-444
-    type: vless
-    server: 44.253.27.201
-    port: 23399
-    uuid: "444"
-    network: http
-    udp: true
-    tls: false
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  - name: 美国万兆-555
-    type: vless
-    server: 44.253.27.201
-    port: 28924
-    uuid: fdd5c8ab-0e8e-44cd-a639-9a1acb743a0a
-    network: http
-    udp: true
-    tls: false
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  # 美国万兆VPN节点组 - IPv6
-  - name: 美国万兆-111-IPv6
-    type: vmess
-    server: "2600:1f14:1823:2a00:788a:fcca:ec35:d785"
-    port: 29820
-    uuid: e93bccdb-d7e7-494a-815f-8122fab2b845
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    network: http
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  - name: 美国万兆-222-IPv6
-    type: vmess
-    server: "2600:1f14:1823:2a00:788a:fcca:ec35:d785"
-    port: 46128
-    uuid: 4c7b58cb-3c83-4a20-8843-5c6db671dc23
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    network: http
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  - name: 美国万兆-333-IPv6
-    type: vmess
-    server: "2600:1f14:1823:2a00:788a:fcca:ec35:d785"
-    port: 19288
-    uuid: 210689ff-9638-41ae-e654-20835d8c52da
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    network: http
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  - name: 美国万兆-444-IPv6
-    type: vless
-    server: "2600:1f14:1823:2a00:788a:fcca:ec35:d785"
-    port: 23399
-    uuid: "444"
-    network: http
-    udp: true
-    tls: false
-    http-opts:
-      method: GET
-      path: 
-        - "/"
-
-  - name: 美国万兆-555-IPv6
-    type: vless
-    server: "2600:1f14:1823:2a00:788a:fcca:ec35:d785"
-    port: 28924
-    uuid: fdd5c8ab-0e8e-44cd-a639-9a1acb743a0a
-    network: http
-    udp: true
-    tls: false
-    http-opts:
-      method: GET
-      path: 
-        - "/"
 
 proxy-groups:
   - name: 负载均衡
@@ -283,22 +86,8 @@ proxy-groups:
     proxies:
       - 直连-vless
       - 直连-tuic
-      - 美-45.194.100.181-vless
-      - 美-45.194.100.181-tuic
-      - 美-207.228.42.131-vless
-      - 美-207.228.42.131-tuic
-      - 美-68.170.3.215-vless
-      - 美-68.170.3.215-tuic
-      - 美国万兆-111
-      - 美国万兆-222
-      - 美国万兆-333
-      - 美国万兆-444
-      - 美国万兆-555
-      - 美国万兆-111-IPv6
-      - 美国万兆-222-IPv6
-      - 美国万兆-333-IPv6
-      - 美国万兆-444-IPv6
-      - 美国万兆-555-IPv6
+      - zoro伪家宽-4837线路200m2t-vless
+      - zoro伪家宽-4837线路200m2t-tuic
 
   - name: 自动选择
     type: url-test
@@ -308,22 +97,8 @@ proxy-groups:
     proxies:
       - 直连-vless
       - 直连-tuic
-      - 美-45.194.100.181-vless
-      - 美-45.194.100.181-tuic
-      - 美-207.228.42.131-vless
-      - 美-207.228.42.131-tuic
-      - 美-68.170.3.215-vless
-      - 美-68.170.3.215-tuic
-      - 美国万兆-111
-      - 美国万兆-222
-      - 美国万兆-333
-      - 美国万兆-444
-      - 美国万兆-555
-      - 美国万兆-111-IPv6
-      - 美国万兆-222-IPv6
-      - 美国万兆-333-IPv6
-      - 美国万兆-444-IPv6
-      - 美国万兆-555-IPv6
+      - zoro伪家宽-4837线路200m2t-vless
+      - zoro伪家宽-4837线路200m2t-tuic
 
   - name: 🌍选择代理节点
     type: select
@@ -333,22 +108,8 @@ proxy-groups:
       - DIRECT
       - 直连-vless
       - 直连-tuic
-      - 美-45.194.100.181-vless
-      - 美-45.194.100.181-tuic
-      - 美-207.228.42.131-vless
-      - 美-207.228.42.131-tuic
-      - 美-68.170.3.215-vless
-      - 美-68.170.3.215-tuic
-      - 美国万兆-111
-      - 美国万兆-222
-      - 美国万兆-333
-      - 美国万兆-444
-      - 美国万兆-555
-      - 美国万兆-111-IPv6
-      - 美国万兆-222-IPv6
-      - 美国万兆-333-IPv6
-      - 美国万兆-444-IPv6
-      - 美国万兆-555-IPv6
+      - zoro伪家宽-4837线路200m2t-vless
+      - zoro伪家宽-4837线路200m2t-tuic
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
