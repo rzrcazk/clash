@@ -46,7 +46,7 @@ proxy-providers:
     proxy: 直连
 
   Airport-999:
-    url: "http://user.123491.xyz/s/cb6b4fc489d7ad1b780b7ba10d2a948d"
+    url: "https://999.juanshen1234.eu.org/46d98975-d7d4-4745-b83e-a2f705166380?clash"
     type: http
     interval: 86400
     path: /etc/openclash/proxy_provider/Airport-999.yaml
@@ -56,16 +56,6 @@ proxy-providers:
       interval: 600
     proxy: 直连
 
-  Airport-111:
-    url: "https://999.juanshen1234.eu.org/46d98975-d7d4-4745-b83e-a2f705166380?clash"
-    type: http
-    interval: 86400
-    path: /etc/openclash/proxy_provider/Airport-111.yaml
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 600
-    proxy: 直连
 
 # 节点信息
 proxies:
@@ -168,9 +158,9 @@ proxy-groups:
   - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, <<: *pr}
-  - {name: 👆 手动选择, type: select, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999, Airport-111]}
-  - {name: 🔯 故障转移, type: fallback, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999, Airport-111], tolerance: 20, interval: 600}
-  - {name: ♻️ 自动选择, type: url-test, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999, Airport-111], tolerance: 20, interval: 600}
+  - {name: 👆 手动选择, type: select, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999]}
+  - {name: 🔯 故障转移, type: fallback, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999], tolerance: 20, interval: 600}
+  - {name: ♻️ 自动选择, type: url-test, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999], tolerance: 20, interval: 600}
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
