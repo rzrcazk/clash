@@ -56,6 +56,17 @@ proxy-providers:
       interval: 600
     proxy: 直连
 
+  Airport-juanshen:
+    url: "https://juanshen.juanshen1234.eu.org/46d98975-d7d4-4745-b83e-a2f705166380"
+    type: http
+    interval: 86400
+    path: /etc/openclash/proxy_provider/Airport-juanshen.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 600
+    proxy: 直连
+
 
 # 节点信息
 proxies:
