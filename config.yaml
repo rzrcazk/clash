@@ -169,9 +169,9 @@ proxy-groups:
   - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, <<: *pr}
-  - {name: 👆 手动选择, type: select, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999]}
-  - {name: 🔯 故障转移, type: fallback, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999], tolerance: 20, interval: 600}
-  - {name: ♻️ 自动选择, type: url-test, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999], tolerance: 20, interval: 600}
+  - {name: 👆 手动选择, type: select, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999, Airport-juanshen]}
+  - {name: 🔯 故障转移, type: fallback, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999, Airport-juanshen], tolerance: 20, interval: 600}
+  - {name: ♻️ 自动选择, type: url-test, use: [Airport-claw, Airport-666, Airport-777, Airport-888, Airport-999, Airport-juanshen], tolerance: 20, interval: 600}
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
