@@ -52,12 +52,11 @@ proxies:
     skip-cert-verify: true
     sni: www.tesla.com
 
-  # 美-45.194.100.181节点组
-  - name: 美-45.194.100.181-vless
+  - name: zoro伪家宽-4837线路200m2t-vless
     type: vless
     server: 47.79.33.98
     port: 8443
-    uuid: 436eb9d8-d866-4df2-ef2b-f6be42ec2690
+    uuid: 092be669-80e7-4108-edd1-28255e9a6a88
     network: tcp
     udp: true
     tls: true
@@ -67,71 +66,17 @@ proxies:
       public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
     client-fingerprint: chrome
 
-  - name: 美-45.194.100.181-tuic
+  - name: zoro伪家宽-4837线路200m2t-tuic
     type: tuic
     server: 47.79.33.98
     port: 8443
-    uuid: 436eb9d8-d866-4df2-ef2b-f6be42ec2690
-    password: p6CkUUImzC
+    uuid: 092be669-80e7-4108-edd1-28255e9a6a88
+    password: BS7dFZkG86
     alpn: [h3, h2, http/1.1]
     congestion-controller: bbr
     skip-cert-verify: true
     sni: www.tesla.com
 
-  # 美-207.228.42.131节点组
-  - name: 美-207.228.42.131-vless
-    type: vless
-    server: 47.79.33.98
-    port: 8443
-    uuid: 0866c599-90b2-4e2a-c713-d51c579c6167
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.tesla.com
-    reality-opts:
-      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
-    client-fingerprint: chrome
-
-  - name: 美-207.228.42.131-tuic
-    type: tuic
-    server: 47.79.33.98
-    port: 8443
-    uuid: 0866c599-90b2-4e2a-c713-d51c579c6167
-    password: ToCbX0hJWf
-    alpn: [h3, h2, http/1.1]
-    congestion-controller: bbr
-    skip-cert-verify: true
-    sni: www.tesla.com
-
-  # 美-68.170.3.215节点组
-  - name: 美-68.170.3.215-vless
-    type: vless
-    server: 47.79.33.98
-    port: 8443
-    uuid: c5d20083-2028-44f8-c59d-27c348821b6d
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.tesla.com
-    reality-opts:
-      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
-    client-fingerprint: chrome
-
-  - name: 美-68.170.3.215-tuic
-    type: tuic
-    server: 47.79.33.98
-    port: 8443
-    uuid: c5d20083-2028-44f8-c59d-27c348821b6d
-    password: FbCNMeMeLc
-    alpn: [h3, h2, http/1.1]
-    congestion-controller: bbr
-    skip-cert-verify: true
-    sni: www.tesla.com
-
-  
-  
 proxy-groups:
   - name: 负载均衡
     type: load-balance
@@ -141,12 +86,8 @@ proxy-groups:
     proxies:
       - 直连-vless
       - 直连-tuic
-      - 美-45.194.100.181-vless
-      - 美-45.194.100.181-tuic
-      - 美-207.228.42.131-vless
-      - 美-207.228.42.131-tuic
-      - 美-68.170.3.215-vless
-      - 美-68.170.3.215-tuic
+      - zoro伪家宽-4837线路200m2t-vless
+      - zoro伪家宽-4837线路200m2t-tuic
 
   - name: 自动选择
     type: url-test
@@ -156,12 +97,8 @@ proxy-groups:
     proxies:
       - 直连-vless
       - 直连-tuic
-      - 美-45.194.100.181-vless
-      - 美-45.194.100.181-tuic
-      - 美-207.228.42.131-vless
-      - 美-207.228.42.131-tuic
-      - 美-68.170.3.215-vless
-      - 美-68.170.3.215-tuic
+      - zoro伪家宽-4837线路200m2t-vless
+      - zoro伪家宽-4837线路200m2t-tuic
 
   - name: 🌍选择代理节点
     type: select
@@ -171,12 +108,8 @@ proxy-groups:
       - DIRECT
       - 直连-vless
       - 直连-tuic
-      - 美-45.194.100.181-vless
-      - 美-45.194.100.181-tuic
-      - 美-207.228.42.131-vless
-      - 美-207.228.42.131-tuic
-      - 美-68.170.3.215-vless
-      - 美-68.170.3.215-tuic
+      - zoro伪家宽-4837线路200m2t-vless
+      - zoro伪家宽-4837线路200m2t-tuic
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
