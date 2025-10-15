@@ -77,6 +77,34 @@ proxies:
     skip-cert-verify: true
     sni: www.tesla.com
 
+  - name: US-10.29-4T
+    type: vless
+    server: 154.56.121.150
+    port: 61572
+    uuid: 48b943b9-9620-4021-9245-a0458723086d
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.paypal.com
+    reality-opts:
+      public-key: lgyQHFjimZzNrNZYMKrGgPLRj6AiGVV0A4eLCMSEMGg
+    client-fingerprint: chrome
+
+  - name: 洛杉矶
+    type: vless
+    server: 216.133.149.139
+    port: 23581
+    uuid: b5471668-94dc-4ea5-ae97-3bb9dabcd2a9
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.cloudflare.com
+    reality-opts:
+      public-key: EOYTqph-go2SazIPcSDl5pJGNyOnrR0mWaL8Tc_paEM
+    client-fingerprint: chrome
+
 proxy-groups:
   - name: 负载均衡
     type: load-balance
@@ -88,6 +116,8 @@ proxy-groups:
       - 直连-tuic
       - zoro伪家宽-4837线路200m2t-vless
       - zoro伪家宽-4837线路200m2t-tuic
+      - US-10.29-4T
+      - 洛杉矶
 
   - name: 自动选择
     type: url-test
@@ -99,6 +129,8 @@ proxy-groups:
       - 直连-tuic
       - zoro伪家宽-4837线路200m2t-vless
       - zoro伪家宽-4837线路200m2t-tuic
+      - US-10.29-4T
+      - 洛杉矶
 
   - name: 🌍选择代理节点
     type: select
@@ -110,6 +142,8 @@ proxy-groups:
       - 直连-tuic
       - zoro伪家宽-4837线路200m2t-vless
       - zoro伪家宽-4837线路200m2t-tuic
+      - US-10.29-4T
+      - 洛杉矶
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
