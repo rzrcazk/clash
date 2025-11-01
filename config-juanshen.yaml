@@ -12,17 +12,6 @@ proxy-providers:
       interval: 600
     proxy: 直连
 
-  Airport-cfnew:
-    url: "https://url.v1.mk/sub?target=clash&url=https%3A%2F%2Fcfnew.952712.xyz%2F9527%2Fsub&insert=false"
-    type: http
-    interval: 86400
-    path: /etc/openclash/proxy_provider/Airport-cfnew.yaml
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 600
-    proxy: 直连
-
   Airport-juanshen:
     url: "https://s.jhb.edu.kg/sub?target=clash&url=https%3A%2F%2Fcfnew.juanshen.eu.org%2F46d98975-d7d4-4745-b83e-a2f705166380%2Fsub&insert=false"
     type: http
@@ -135,9 +124,9 @@ proxy-groups:
   - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, <<: *pr}
-  - {name: 👆 手动选择, type: select, use: [Airport-claw, Airport-cfnew, Airport-juanshen]}
-  - {name: 🔯 故障转移, type: fallback, use: [Airport-claw, Airport-cfnew, Airport-juanshen], tolerance: 20, interval: 600}
-  - {name: ♻️ 自动选择, type: url-test, use: [Airport-claw, Airport-cfnew, Airport-juanshen], tolerance: 20, interval: 600}
+  - {name: 👆 手动选择, type: select, use: [Airport-claw, Airport-juanshen]}
+  - {name: 🔯 故障转移, type: fallback, use: [Airport-claw, Airport-juanshen], tolerance: 20, interval: 600}
+  - {name: ♻️ 自动选择, type: url-test, use: [Airport-claw, Airport-juanshen], tolerance: 20, interval: 600}
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
