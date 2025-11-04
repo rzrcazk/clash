@@ -105,46 +105,186 @@ proxies:
       public-key: EOYTqph-go2SazIPcSDl5pJGNyOnrR0mWaL8Tc_paEM
     client-fingerprint: chrome
 
+  - name: US-Chenxin
+    type: vless
+    server: chenxinlan.644222.xyz
+    port: 34908
+    uuid: e057b20a-1857-4641-817c-9f446c682bad
+    network: tcp
+    udp: true
+    tls: true
+    encryption: none
+    security: reality
+    sni: icloud.com
+    reality-opts:
+      public-key: kHodfr5bwaAOHtQ_PJaiKDYGLHSNzvybi-qkyHwhFl8
+      short-id: c9
+      spider-x: /
+    client-fingerprint: chrome
+
+# 从 test.yaml 合并的节点
+  - name: 直连-vless
+    type: vless
+    server: 47.79.33.98
+    port: 8443
+    uuid: 160787c1-f590-4449-cb32-7e7ece624f4f
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.tesla.com
+    reality-opts:
+      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
+    client-fingerprint: chrome
+
+  - name: 直连-tuic
+    type: tuic
+    server: 47.79.33.98
+    port: 8443
+    uuid: 160787c1-f590-4449-cb32-7e7ece624f4f
+    password: KE71ymHsMu
+    alpn: [h3, h2, http/1.1]
+    congestion-controller: bbr
+    skip-cert-verify: true
+    sni: www.tesla.com
+
+  - name: zoro伪家宽-4837线路200m2t-vless
+    type: vless
+    server: 47.79.33.98
+    port: 8443
+    uuid: 092be669-80e7-4108-edd1-28255e9a6a88
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.tesla.com
+    reality-opts:
+      public-key: mr66Ab0DccIxMy0vMVgAxI6U8NqY4bd6YlmXvCeck0A
+    client-fingerprint: chrome
+
+  - name: zoro伪家宽-4837线路200m2t-tuic
+    type: tuic
+    server: 47.79.33.98
+    port: 8443
+    uuid: 092be669-80e7-4108-edd1-28255e9a6a88
+    password: BS7dFZkG86
+    alpn: [h3, h2, http/1.1]
+    congestion-controller: bbr
+    skip-cert-verify: true
+    sni: www.tesla.com
+
+  - name: US-10.29-4T
+    type: vless
+    server: 154.56.121.150
+    port: 61572
+    uuid: 48b943b9-9620-4021-9245-a0458723086d
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.paypal.com
+    reality-opts:
+      public-key: lgyQHFjimZzNrNZYMKrGgPLRj6AiGVV0A4eLCMSEMGg
+    client-fingerprint: chrome
+
+  - name: 洛杉矶
+    type: vless
+    server: 216.133.149.139
+    port: 23581
+    uuid: b5471668-94dc-4ea5-ae97-3bb9dabcd2a9
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.cloudflare.com
+    reality-opts:
+      public-key: EOYTqph-go2SazIPcSDl5pJGNyOnrR0mWaL8Tc_paEM
+    client-fingerprint: chrome
+
+  - name: US-Chenxin
+    type: vless
+    server: chenxinlan.644222.xyz
+    port: 34908
+    uuid: e057b20a-1857-4641-817c-9f446c682bad
+    network: tcp
+    udp: true
+    tls: true
+    encryption: none
+    security: reality
+    sni: icloud.com
+    reality-opts:
+      public-key: kHodfr5bwaAOHtQ_PJaiKDYGLHSNzvybi-qkyHwhFl8
+      short-id: c9
+      spider-x: /
+    client-fingerprint: chrome
+
 proxy-groups:
+  - name: "🚀 节点选择"
+    type: select
+    proxies:
+      - ✈️ 自动选择
+      - 🇭🇰 香港
+      - 🇭🇰 香港300G
+      - 🇺🇸 美国 5T
+      - 🇺🇸 美东 无限
+      - 直连-vless
+      - 直连-tuic
+      - zoro伪家宽-4837线路200m2t-vless
+      - zoro伪家宽-4837线路200m2t-tuic
+      - US-10.29-4T
+      - 洛杉矶
+      - US-Chenxin
+      - DIRECT
+
+  # 自动测速：定期测延迟，��动挑最快
+  - name: "✈️ 自动选择"
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 50
+    proxies:
+      - 🇭🇰 香港
+      - 🇭🇰 香港300G
+      - 🇺🇸 美国 5T
+      - 🇺🇸 美东 无限
+      - 直连-vless
+      - 直连-tuic
+      - zoro伪家宽-4837线路200m2t-vless
+      - zoro伪家宽-4837线路200m2t-tuic
+      - US-10.29-4T
+      - 洛杉矶
+      - US-Chenxin
+
+  # 负载均衡：分散流量到多个节点
   - name: 负载均衡
     type: load-balance
     url: https://www.gstatic.com/generate_204
     interval: 300
     strategy: round-robin
     proxies:
+      - 🇭🇰 香港
+      - 🇭🇰 香港300G
+      - 🇺🇸 美国 5T
+      - 🇺🇸 美东 无限
       - 直连-vless
       - 直连-tuic
       - zoro伪家宽-4837线路200m2t-vless
       - zoro伪家宽-4837线路200m2t-tuic
       - US-10.29-4T
       - 洛杉矶
+      - US-Chenxin
 
-  - name: 自动选择
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    proxies:
-      - 直连-vless
-      - 直连-tuic
-      - zoro伪家宽-4837线路200m2t-vless
-      - zoro伪家宽-4837线路200m2t-tuic
-      - US-10.29-4T
-      - 洛杉矶
-
-  - name: 🌍选择代理节点
-    type: select
-    proxies:
-      - 负载均衡
-      - 自动选择
-      - DIRECT
-      - 直连-vless
-      - 直连-tuic
-      - zoro伪家宽-4837线路200m2t-vless
-      - zoro伪家宽-4837线路200m2t-tuic
-      - US-10.29-4T
-      - 洛杉矶
 rules:
+  - DOMAIN-SUFFIX,google.com,🚀 节点选择
+  - DOMAIN-SUFFIX,youtube.com,🚀 节点选择
+  - DOMAIN-SUFFIX,openai.com,🚀 节点选择
+  - DOMAIN-SUFFIX,chatgpt.com,🚀 节点选择
+  - DOMAIN-SUFFIX,anthropic.com,🚀 节点选择
+  - DOMAIN-SUFFIX,claude.ai,🚀 节点选择
+  - DOMAIN-SUFFIX,facebook.com,🚀 节点选择
+  - DOMAIN-SUFFIX,twitter.com,🚀 节点选择
+  - DOMAIN-SUFFIX,instagram.com,🚀 节点选择
+  - DOMAIN-SUFFIX,telegram.org,🚀 节点选择
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,🌍选择代理节点
+  - MATCH,🚀 节点选择
