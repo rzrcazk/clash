@@ -132,6 +132,24 @@ proxies:
     udp: true
     network: tcp
 
+  - name: 美国1
+    type: hysteria2
+    server: 15.204.129.38
+    port: 33333
+    password: c8750ad3-8ba9-4b33-bbdb-e7798845a629
+    alpn:
+      - h3
+    skip-cert-verify: true
+
+  - name: 美国2
+    type: hysteria2
+    server: 135.148.82.248
+    port: 33333
+    password: 9ec830fd-79da-4706-a964-cb227d7198db
+    alpn:
+      - h3
+    skip-cert-verify: true
+
 # 从 test.yaml 合并的节点
   - name: 直连-vless
     type: vless
@@ -238,6 +256,24 @@ proxies:
     udp: true
     network: tcp
 
+  - name: 美国1
+    type: hysteria2
+    server: 15.204.129.38
+    port: 33333
+    password: c8750ad3-8ba9-4b33-bbdb-e7798845a629
+    alpn:
+      - h3
+    skip-cert-verify: true
+
+  - name: 美国2
+    type: hysteria2
+    server: 135.148.82.248
+    port: 33333
+    password: 9ec830fd-79da-4706-a964-cb227d7198db
+    alpn:
+      - h3
+    skip-cert-verify: true
+
 proxy-groups:
   - name: "🚀 节点选择"
     type: select
@@ -255,6 +291,8 @@ proxy-groups:
       - 洛杉矶
       - US-Chenxin
       - JP-Chiyoda-City
+      - 美国1
+      - 美国2
       - DIRECT
 
   # 自动测速：定期测延迟，��动挑最快
@@ -276,6 +314,8 @@ proxy-groups:
       - 洛杉矶
       - US-Chenxin
       - JP-Chiyoda-City
+      - 美国1
+      - 美国2
 
   # 负载均衡：分散流量到多个节点
   - name: 负载均衡
@@ -296,6 +336,8 @@ proxy-groups:
       - 洛杉矶
       - US-Chenxin
       - JP-Chiyoda-City
+      - 美国1
+      - 美国2
 
 rules:
   - DOMAIN-SUFFIX,google.com,🚀 节点选择
