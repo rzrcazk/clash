@@ -122,6 +122,16 @@ proxies:
       spider-x: /
     client-fingerprint: chrome
 
+  - name: JP-Chiyoda-City
+    type: vmess
+    server: 210.230.206.18
+    port: 35965
+    uuid: 8297c1b6-179e-b306-a3fe-cb0df3d31b5a
+    alterId: 64
+    cipher: auto
+    udp: true
+    network: tcp
+
 # 从 test.yaml 合并的节点
   - name: 直连-vless
     type: vless
@@ -218,6 +228,16 @@ proxies:
       spider-x: /
     client-fingerprint: chrome
 
+  - name: JP-Chiyoda-City
+    type: vmess
+    server: 210.230.206.18
+    port: 35965
+    uuid: 8297c1b6-179e-b306-a3fe-cb0df3d31b5a
+    alterId: 64
+    cipher: auto
+    udp: true
+    network: tcp
+
 proxy-groups:
   - name: "🚀 节点选择"
     type: select
@@ -234,6 +254,7 @@ proxy-groups:
       - US-10.29-4T
       - 洛杉矶
       - US-Chenxin
+      - JP-Chiyoda-City
       - DIRECT
 
   # 自动测速：定期测延迟，��动挑最快
@@ -254,6 +275,7 @@ proxy-groups:
       - US-10.29-4T
       - 洛杉矶
       - US-Chenxin
+      - JP-Chiyoda-City
 
   # 负载均衡：分散流量到多个节点
   - name: 负载均衡
@@ -273,6 +295,7 @@ proxy-groups:
       - US-10.29-4T
       - 洛杉矶
       - US-Chenxin
+      - JP-Chiyoda-City
 
 rules:
   - DOMAIN-SUFFIX,google.com,🚀 节点选择
