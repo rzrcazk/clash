@@ -77,51 +77,7 @@ proxies:
     skip-cert-verify: true
     sni: www.tesla.com
 
-  - name: US-10.29-4T
-    type: vless
-    server: 154.56.121.150
-    port: 61572
-    uuid: 48b943b9-9620-4021-9245-a0458723086d
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.paypal.com
-    reality-opts:
-      public-key: lgyQHFjimZzNrNZYMKrGgPLRj6AiGVV0A4eLCMSEMGg
-    client-fingerprint: chrome
-
-  - name: 洛杉矶
-    type: vless
-    server: 216.133.149.139
-    port: 23581
-    uuid: b5471668-94dc-4ea5-ae97-3bb9dabcd2a9
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.cloudflare.com
-    reality-opts:
-      public-key: EOYTqph-go2SazIPcSDl5pJGNyOnrR0mWaL8Tc_paEM
-    client-fingerprint: chrome
-
-  - name: US-Chenxin
-    type: vless
-    server: chenxinlan.644222.xyz
-    port: 34908
-    uuid: e057b20a-1857-4641-817c-9f446c682bad
-    network: tcp
-    udp: true
-    tls: true
-    encryption: none
-    security: reality
-    sni: icloud.com
-    reality-opts:
-      public-key: kHodfr5bwaAOHtQ_PJaiKDYGLHSNzvybi-qkyHwhFl8
-      short-id: c9
-      spider-x: /
-    client-fingerprint: chrome
-
+  
   - name: JP-Chiyoda-City
     type: vmess
     server: 210.230.206.18
@@ -201,51 +157,7 @@ proxies:
     skip-cert-verify: true
     sni: www.tesla.com
 
-  - name: US-10.29-4T
-    type: vless
-    server: 154.56.121.150
-    port: 61572
-    uuid: 48b943b9-9620-4021-9245-a0458723086d
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.paypal.com
-    reality-opts:
-      public-key: lgyQHFjimZzNrNZYMKrGgPLRj6AiGVV0A4eLCMSEMGg
-    client-fingerprint: chrome
-
-  - name: 洛杉矶
-    type: vless
-    server: 216.133.149.139
-    port: 23581
-    uuid: b5471668-94dc-4ea5-ae97-3bb9dabcd2a9
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.cloudflare.com
-    reality-opts:
-      public-key: EOYTqph-go2SazIPcSDl5pJGNyOnrR0mWaL8Tc_paEM
-    client-fingerprint: chrome
-
-  - name: US-Chenxin
-    type: vless
-    server: chenxinlan.644222.xyz
-    port: 34908
-    uuid: e057b20a-1857-4641-817c-9f446c682bad
-    network: tcp
-    udp: true
-    tls: true
-    encryption: none
-    security: reality
-    sni: icloud.com
-    reality-opts:
-      public-key: kHodfr5bwaAOHtQ_PJaiKDYGLHSNzvybi-qkyHwhFl8
-      short-id: c9
-      spider-x: /
-    client-fingerprint: chrome
-
+  
   - name: JP-Chiyoda-City
     type: vmess
     server: 210.230.206.18
@@ -287,9 +199,6 @@ proxy-groups:
       - 直连-tuic
       - zoro伪家宽-4837线路200m2t-vless
       - zoro伪家宽-4837线路200m2t-tuic
-      - US-10.29-4T
-      - 洛杉矶
-      - US-Chenxin
       - JP-Chiyoda-City
       - 美国1
       - 美国2
@@ -310,9 +219,6 @@ proxy-groups:
       - 直连-tuic
       - zoro伪家宽-4837线路200m2t-vless
       - zoro伪家宽-4837线路200m2t-tuic
-      - US-10.29-4T
-      - 洛杉矶
-      - US-Chenxin
       - JP-Chiyoda-City
       - 美国1
       - 美国2
@@ -332,9 +238,6 @@ proxy-groups:
       - 直连-tuic
       - zoro伪家宽-4837线路200m2t-vless
       - zoro伪家宽-4837线路200m2t-tuic
-      - US-10.29-4T
-      - 洛杉矶
-      - US-Chenxin
       - JP-Chiyoda-City
       - 美国1
       - 美国2
